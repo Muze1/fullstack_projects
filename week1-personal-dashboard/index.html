@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Dashboard - Week 1 Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>🚀 Personal Dashboard</h1>
+        <p>Build the widgets here.</p>
+        <div class="widgets">
+            <div class="widget" id="clock-widget">
+                <h3>Live Clock</h3>
+                <div id="clock">--:--:--</div>
+            </div>
+            <div class="widget" id="date-widget">
+                <h3>Today's Date</h3>
+                <div id="date">Loading...</div>
+            </div>
+            <div class="widget" id="weather-widget">
+                <h3>Local Weather</h3>
+                <div id="weather">Loading...</div>
+                <button id="temp-toggle">Toggle °C/°F</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
