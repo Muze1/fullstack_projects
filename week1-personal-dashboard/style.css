@@ -124,3 +124,16 @@ h1 {
     background: linear-gradient(90deg, #3a5a80, #5a8db8);
     box-shadow: 0 4px 10px rgba(74, 111, 165, 0.3);
 }
+
+/*  Loading states  */
+#weather.loading::after {
+    content: '⏳';
+    animation: pulse 1.5s infinite;
+}
+
+#clock:empty::before,
+#date:empty::before {
+    content: '--:--:--';
+    color: #ccc;
+}
+
