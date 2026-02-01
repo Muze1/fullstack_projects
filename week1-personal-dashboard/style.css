@@ -91,3 +91,17 @@ h1 {
     border-left: 4px solid #4a6fa5;
 }
 
+/*  Weather Widget  */
+#weather {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+#weather img {
+    display: block;
+    margin: 1rem auto;
+    background: #eef5ff;
+    border-radius: 50%;
+    padding: 5px;
+}
