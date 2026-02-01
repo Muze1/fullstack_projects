@@ -137,3 +137,27 @@ h1 {
     color: #ccc;
 }
 
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/*  Responsive design  */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .widgets {
+        grid-template-columns: 1fr;
+    }
+
+    #clock {
+        font-size: 2.2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
