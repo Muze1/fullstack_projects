@@ -105,3 +105,22 @@ h1 {
     border-radius: 50%;
     padding: 5px;
 }
+
+/*  C/F Toggle Button  */
+#temp-toggle {
+    background: linear-gradient(90deg, #4a6fa5, #6d9dc5);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+#temp-toggle:hover {
+    background: linear-gradient(90deg, #3a5a80, #5a8db8);
+    box-shadow: 0 4px 10px rgba(74, 111, 165, 0.3);
+}
