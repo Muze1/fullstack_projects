@@ -48,3 +48,36 @@ updateDate()
 
 let currentWeatherData = null; // Stores weather info from API (null until loaded)
 let isCelsius = true; // Tracks display unit (true = °C)
+
+async function fetchWeather(city = 'London') {
+    try {
+        // Show loading state
+        weatherElement.innerHTML = '<div class="loading">⌛ Loading weather...</div>'
+
+        // API call to local server backend
+        const response = await fetch(`http://localhost:3000/api/weather?city=${encodeURIComponent(city)}`)
+        // await - pauses until network request completes (non-blocking)
+
+        // Check HTTP status
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Parse JSON response - pauses until JSON is parsed
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.error || 'Weather service error')
+        } // Check if our backend returned success.
+
+        // Store data and update dispaly
+        currentWeatherData = data;
+        updateWeatherDisply()
+    } catch (error) {
+        // Handle all erros (network, parsing, API errors)
+        console.error('Error fetching weather:', error);
+
+        // Show user-friendly error UI
+        weatherElement.innerHTML = `...error HTML...`;
+    }
+}
