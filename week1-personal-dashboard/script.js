@@ -122,6 +122,7 @@ function updateWeatherDisplay() {
     `;
 }
 
+
 // Temperature Toggle
 toggleButton.addEventListener('click', () => {
     isCelsius = !isCelsius;
@@ -130,3 +131,14 @@ toggleButton.addEventListener('click', () => {
     }
     toggleButton.textContent = `Show in ${isCelsius ? '°F' : '°C'}`;
 });
+
+
+// Initialise Dashboard
+function initDashboard() {
+    console.log('🚀 Dashboard initializing...');
+    updateClock();
+    updateDate();
+    fetchWeather('London');
+}
+
+document.addEventListener('DOMContentLoaded', initDashboard);
