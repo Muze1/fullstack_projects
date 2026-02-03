@@ -90,3 +90,35 @@ async function fetchWeather(city = 'London') {
         `;
     }
 }
+
+function updateWeatherDisplay() {
+    if (!currentWeatherData) return;
+
+    const temp = isCelsius ?
+        `${currentWeatherData.temperature}°C` : 
+        `${Math.round((currentWeatherData.temperature * 9/5) + 32)}°F`;
+
+    const feelsLike = isCelsius ? 
+        `${currentWeatherData.temperature}°C` : 
+        `${Math.round((currentWeatherData.temperature * 9/5) + 32)}°F`;
+
+    const iconCode = currentWeatherData.icon;
+    const description = currentWeatherData.description.charAt(0).toUpperCase() + currentWeatherData.description.slice(1);
+
+    weatherElement.innerHTML = `
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">${temp}</div>
+            <div style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>${description}</strong></div>
+            <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" 
+                 alt="${description}" 
+                 style="width: 80px; height: 80px; margin: 0.5rem 0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; text-align: left;">
+                <div>🌡️ Feels like: ${feelsLike}</div>
+                <div>💧 Humidity: ${currentWeatherData.humidity}%</div>
+                <div>📍 Location: ${currentWeatherData.city}</div>
+                <div>🔄 Last updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            </div>
+        </div>
+    `;
+}
+
