@@ -15,3 +15,6 @@ function updateClock() {
 
     clockElement.textContent = `${hours}:${minutes}:${seconds}`
 }
+
+updateClock()
+setInterval(updateClock, 1000)
