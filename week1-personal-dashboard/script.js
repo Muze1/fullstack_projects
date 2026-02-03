@@ -5,7 +5,9 @@ const toggleButton = document.getElementById('temp-toggle')
 // document.getElementById() - finds elements by their 'id' attribute
 // Store in variables to avoid repeated DOM queries (optimise performance)
 
-// Live clock widget
+
+// Live Clock Widget
+
 function updateClock() {
     const now = new Date() // Create an object with current date/time
 
@@ -19,6 +21,8 @@ function updateClock() {
     // Template literal - build a formatted string (string with variable components in its structure)
 }
 
+
+// Date Widget
 updateClock()
 setInterval(updateClock, 1000) // Calls function every 1000ms (1s)
 
@@ -39,3 +43,8 @@ function updateDate() {
 
 updateDate()
 
+
+// Weather Widget
+
+let currentWeatherData = null; // Stores weather info from API (null until loaded)
+let isCelsius = true; // Tracks display unit (true = °C)
