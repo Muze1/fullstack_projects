@@ -18,6 +18,11 @@ app.get('/api/weather', async (req, res) => {
 // req - Request: Object containing details about the incoming request.
 // res - Response: Object sued to send a response back to the frontend.
 try {
+
+    // DEBUG TESTING LINE
+    console.log('API Key from .env:', process.env.OPENWEATHER_API_KEY ? 'Key is present' : 'KEY IS MISSING!');
+    // DEBUG TESTING LINE
+
     const city = req.query.city || 'London'; // Request data for the specified city.
     const apiKey = process.env.OPENWEATHER_API_KEY; // Retrieve API key from .env file.
 
