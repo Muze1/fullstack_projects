@@ -21,3 +21,21 @@ function updateClock() {
 
 updateClock()
 setInterval(updateClock, 1000) // Calls function every 1000ms (1s)
+
+function updateDate() {
+    const today = new Date()
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }
+    // Controls which date parts to include, and their format.
+
+    const formattedDate = today.toLocaleDateString('en-GB', options)
+    // Formats date based on locale options
+    dateElement.textContent = formattedDate;
+}
+
+updateDate()
+
