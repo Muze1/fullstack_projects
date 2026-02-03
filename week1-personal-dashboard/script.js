@@ -74,10 +74,19 @@ async function fetchWeather(city = 'London') {
         currentWeatherData = data;
         updateWeatherDisply()
     } catch (error) {
-        // Handle all erros (network, parsing, API errors)
+        // Handle all errors (network, parsing, API errors)
         console.error('Error fetching weather:', error);
 
         // Show user-friendly error UI
-        weatherElement.innerHTML = `...error HTML...`;
+        weatherElement.innerHTML = `
+            <div style="color: #e74c3c; text-align: center; padding: 1rem;">
+                <div style="font-size: 2em;">🌧️</div>
+                <div><strong>Weather Unavailable</strong></div>
+                <div style="font-size: 0.9em; margin-top: 0.5rem;">${error.message}</div>
+                <button onclick="fetchWeather('London')" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">
+                    Retry
+                </button>
+            </div>
+        `;
     }
 }
