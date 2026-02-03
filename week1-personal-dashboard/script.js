@@ -122,3 +122,11 @@ function updateWeatherDisplay() {
     `;
 }
 
+// Temperature Toggle
+toggleButton.addEventListener('click', () => {
+    isCelsius = !isCelsius;
+    if (currentWeatherData) {
+        updateWeatherDisplay();
+    }
+    toggleButton.textContent = `Show in ${isCelsius ? '°F' : '°C'}`;
+});
