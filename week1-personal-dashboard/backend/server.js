@@ -19,7 +19,7 @@ app.get('/api/weather', async (req, res) => {
 // res - Response: Object sued to send a response back to the frontend.
 try {
     const city = req.query.city || 'London'; // Request data for the specified city.
-    const apiKey = process.env.OPENWEATER_API_KEY; // Retrieve API key from .env file.
+    const apiKey = process.env.OPENWEATHER_API_KEY; // Retrieve API key from .env file.
 
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; // Call OpenWeatherMap API by plugging in city and the API key retrieved above.
 
@@ -34,7 +34,7 @@ try {
 
         success:true,
         city: weatherData.name,
-        temparature: Math.round(weatherData.main.temp),
+        temperature: Math.round(weatherData.main.temp),
         feels_like: Math.round(weatherData.main.feels_like),
         description: weatherData.weather[0].description,
         humidity: weatherData.main.humidity,
