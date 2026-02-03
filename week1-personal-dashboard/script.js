@@ -2,19 +2,22 @@ const clockElement = document.getElementById('clock')
 const dateElement = document.getElementById('date')
 const weatherElement = document.getElementById('weather')
 const toggleButton = document.getElementById('temp-toggle')
-// Create variables for calling the relevant elements.
-// By calling the elements once at startup and storing the references, you avoid querying the DOM every time you need to update the clock (which is every second). Fundamental performance optimisation.
+// document.getElementById() - finds elements by their 'id' attribute
+// Store in variables to avoid repeated DOM queries (optimise performance)
 
 // Live clock widget
 function updateClock() {
-    const now = new Date() // Create a Date object with current time
+    const now = new Date() // Create an object with current date/time
 
     const hours = now.getHours().toString().padStart(2, '0')
     const minutes = now.getMinutes().toString().padStart(2, '0')
     const seconds = now.getSeconds().toString().padStart(2, '0')
+    // .getHours/Minutes/Seconds() - Extract Hours/Minutes/Seconds time components
+    // .padStart() - Ensures 2-digit format. E.g. "09" instead of just "9"
 
     clockElement.textContent = `${hours}:${minutes}:${seconds}`
+    // Template literal - build a formatted string (string with variable components in its structure)
 }
 
 updateClock()
-setInterval(updateClock, 1000)
+setInterval(updateClock, 1000) // Calls function every 1000ms (1s)
