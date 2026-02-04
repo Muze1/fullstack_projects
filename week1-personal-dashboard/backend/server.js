@@ -46,11 +46,13 @@ try {
         icon: weatherData.weather[0].icon
     });
 } catch (error) {
-    // Send a user-friendly error to the frontend
-    res.status(500).json({
+    console.error('❌ Server error:', error.message);
+    // Log the full technical error.
+
+    res.status(statusCode).json({
         success: false,
-        error: 'Could not fetch weather data. Please check the city name or try again later.'
-    });
+        error: userMessage
+    })
 }
 
 // try... catch - This block wraps the process so that if anything fails, execution jumps to the catch.
