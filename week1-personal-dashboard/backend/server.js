@@ -50,7 +50,7 @@ try {
 
     res.status(500).json({
         success: false,
-        error: userMessage
+        error: 'Could not fetch weather data.'
     })
 }
 
