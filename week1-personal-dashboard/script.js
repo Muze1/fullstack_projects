@@ -70,9 +70,9 @@ async function fetchWeather(city = 'London') {
             throw new Error(data.error || 'Weather service error')
         } // Check if our backend returned success.
 
-        // Store data and update dispaly
+        // Store data and update display
         currentWeatherData = data;
-        updateWeatherDisply()
+        updateWeatherDisplay()
     } catch (error) {
         // Handle all errors (network, parsing, API errors)
         console.error('Error fetching weather:', error);
@@ -109,9 +109,7 @@ function updateWeatherDisplay() {
         <div style="text-align: center;">
             <div style="font-size: 3rem; margin-bottom: 0.5rem;">${temp}</div>
             <div style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>${description}</strong></div>
-            <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" 
-                 alt="${description}" 
-                 style="width: 80px; height: 80px; margin: 0.5rem 0;">
+            <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${description}" style="width: 80px; height: 80px; margin: 0.5rem 0;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; text-align: left;">
                 <div>🌡️ Feels like: ${feelsLike}</div>
                 <div>💧 Humidity: ${currentWeatherData.humidity}%</div>
