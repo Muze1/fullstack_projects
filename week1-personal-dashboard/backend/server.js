@@ -20,7 +20,7 @@ app.get('/api/weather', async (req, res) => {
 try {
 
     // DEBUG TESTING LINE
-    console.log('API Key from .env:', process.env.OPENWEATHER_API_KEY ? 'Key is present' : 'KEY IS MISSING!');
+    // console.log('API Key from .env:', process.env.OPENWEATHER_API_KEY ? 'Key is present' : 'KEY IS MISSING!');
     // DEBUG TESTING LINE
 
     const city = req.query.city || 'London'; // Request data for the specified city.
