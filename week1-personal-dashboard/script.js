@@ -99,8 +99,8 @@ function updateWeatherDisplay() {
         `${Math.round((currentWeatherData.temperature * 9/5) + 32)}°F`;
 
     const feelsLike = isCelsius ? 
-        `${currentWeatherData.temperature}°C` : 
-        `${Math.round((currentWeatherData.temperature * 9/5) + 32)}°F`;
+        `${currentWeatherData.feelsLike}°C` : 
+        `${Math.round((currentWeatherData.feelsLike * 9/5) + 32)}°F`;
 
     const iconCode = currentWeatherData.icon;
     const description = currentWeatherData.description.charAt(0).toUpperCase() + currentWeatherData.description.slice(1);
