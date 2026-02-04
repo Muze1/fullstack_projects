@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task Flow App | Week 2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
 <body>
-    
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> Task Flow</h1>
+            <p class="subtitle">Drag tasks between columns to update their status.</p>
+        </header>
+
+        <main>
+            <!-- Task Input Form -->
+            <section class="task-creator">
+                <form id="task-form">
+                    <input
+                        type="text"
+                        id="task-input"
+                        placeholder="What needs to be done?"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" id="add-task-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+            </section>
+
+            <!-- Kanban Board -->
+            <section class="board">
+                <!-- Column1: To Do -->
+                <div class="column" id="todo-column">
+                    <div class="column-header">
+                        <h2><i class="fas fa-clipboard-list"></i> To Do</h2>
+                        <span class="task-count" id="todo-count">0</span>
+                    </div>
+                    <div class="tasks-container" id="todo-tasks" data-status="todo">
+                        <!-- Tasks will be inserted here by JavaScript -->
+                        <p class="empty-column-hint">Drag tasks here or add a new one above.</p>
+                    </div>
+                </div>
+
+                <!-- Column 2: In Progress -->
+                <div class="column" id="progress-column">
+                    <div class="column-header">
+                        <h2><i class="fas fa-cogs"></i> In Progress</h2>
+                        <span class="task-count" id="progress-count">0</span>
+                    </div>
+                    <div class="tasks-container" id="progress-tasks" data-status="progress">
+                        <p class="empty-column-hint">Drag tasks here when you start working.</p>
+                    </div>
+                </div>
+
+                <!-- Column 3: Done -->
+                <div class="column" id="done-column">
+                    <div class="column-header">
+                        <h2><i class="fas fa-check-circle"></i> Done</h2>
+                        <span class="task-count" id="done-count">0</span>
+                    </div>
+                    <div class="tasks-container" id="done-tasks" data-status="done">
+                        <p class="empty-column-hint">Completed tasks appear here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Tasks are saved automatically in your browser. Week 2 Project.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
