@@ -46,10 +46,9 @@ try {
         icon: weatherData.weather[0].icon
     });
 } catch (error) {
-    console.error('❌ Server error:', error.message);
-    // Log the full technical error.
+    console.error('❌ Server error:', error.message); // Log the full technical error.
 
-    res.status(statusCode).json({
+    res.status(500).json({
         success: false,
         error: userMessage
     })
