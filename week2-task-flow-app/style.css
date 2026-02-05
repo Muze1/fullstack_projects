@@ -73,7 +73,7 @@ h1 i {
     border-radius: 8px;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease; /* Adds a transition animation to property when state changes, requires state change. */
+    transition: all 0.3s ease; /* Adds a transition animation which is triggered when an element's property changes. Requires property change. */
 }
 
 #task-input:hover {
@@ -82,7 +82,7 @@ h1 i {
 }
 
 #task-input:focus {
-    /* :focus - Creates a change to the property when highlighted */
+    /* :focus - Creates a change to the element when highlighted */
     outline: none;
     border-color: var(--color-todo);
     box-shadow: 0 0 0 3px rgba(245, 101, 101, 0.1);
