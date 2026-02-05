@@ -118,6 +118,56 @@ h1 i {
     align-items: start;
 }
 
+/* Column Styles */
 .column {
-
+    background: var(--color-column-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 6px 20px var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    min-height: 500px;
 }
+
+.column-header {
+    padding: 22px 25px;
+    border-bottom: 3px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#todo-column .column-header {
+    border-color: var(--color-todo);
+    background-color: rgba(245, 137, 54, 0.05);
+}
+
+#progress-column .column-header {
+    border-color: var(--color-progress);
+    background-color: rgba(237, 137, 54, 0.05);
+}
+
+#done-column .column-header {
+    border-color: var(--color-done);
+    background-color: rgba(72, 187, 120, 0.05);
+}
+
+.column-header h2 {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task-count {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    min-width: 32px;
+    text-align: center;
+}
+
