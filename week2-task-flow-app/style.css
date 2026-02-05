@@ -28,3 +28,22 @@ body {
     max-width: 1400px;
     margin: 0 auto;
 }
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 25px 20px;
+}
+
+h1 i {
+    color: var(--color-todo);
+}
+
+.subtitle {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
