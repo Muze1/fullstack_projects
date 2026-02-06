@@ -204,13 +204,14 @@ h1 i {
     margin-bottom: 15px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     border-left: 4px solid;
-    cursor: grab;
-    user-select: none;
+    cursor: grab; /* Shows hand cursor */
+    user-select: none; /* Prevents text selection during drag */
     transition: all 0.3s ease;
     position: relative;
 }
 
 .task-dragging {
+    /* Class for visual feedback */
     opacity: 0.6;
     transform: rotate(3deg);
     cursor: grabbing;
@@ -229,7 +230,7 @@ h1 i {
     margin-bottom: 15px;
     line-height: 1.5;
     min-height: 24px;
-    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .task-content:focus {
