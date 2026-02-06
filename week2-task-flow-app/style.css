@@ -230,7 +230,7 @@ h1 i {
     margin-bottom: 15px;
     line-height: 1.5;
     min-height: 24px;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; /* Allow browser to break and wrap a word if too long */
 }
 
 .task-content:focus {
