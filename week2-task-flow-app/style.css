@@ -172,4 +172,27 @@ h1 i {
 }
 
 /* Tasks Container - Drop Zones */
-.tasks-container
+.tasks-container {
+    padding: 25px;
+    flex: 1;
+    overflow-y: auto;
+    transition: background-color 0.3s;
+    min-height: 200px;
+}
+
+/* Visual states for drag and drop */
+.tasks-container.drag-over {
+    background-color: rgba(66, 153, 255, 0.08);
+    border: 2px dashed #4299e1;
+}
+
+.empty-column-hint {
+    text-align: center;
+    color: #a0aec0;
+    font-style: italic;
+    padding: 40px 20px;
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    margin: 0;
+}
+
