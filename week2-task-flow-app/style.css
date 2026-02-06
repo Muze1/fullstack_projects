@@ -270,3 +270,13 @@ h1 i {
     background: #feb2b2;
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 25px;
+    font-size: 0.9rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 30px;
+}
+
