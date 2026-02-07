@@ -130,7 +130,9 @@ function addTask(text, status = 'todo') {
         id: state.nextId++,
         text: text.trim(),
         status: status,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        completedAt: null
     };
 
     state.tasks.push(newTask);
