@@ -152,3 +152,54 @@ function deleteTask(id) {
     renderTasks();
 }
 
+// Drag & Drop
+let draggedTask = null;
+
+function handleDragStart(e) {
+    draggedTask = this;
+    this.classList.add('dragging');
+
+    // Set drag image
+    e.dataTransfer.setData('text/plain', this.dataset.id);
+    e/dataTransfer.effectAllowed = 'move';
+
+    // Add slight delay for better visuals
+    setTimeout(() => {
+        this.style.opacity = '0.4';
+    }, 0);
+}
+
+function handleDragEnd() {
+    this.classList.remove('dragging');
+    this.style.opacity = '1';
+    draggedTask = null;
+
+    // Remove all drag-over classes
+    Object.values(columns).forEach(column => {
+        column.classList.remove('drag-over');
+    });
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    this.classList.add('drag-over');
+    e.dataTransfer.dropEffect = 'move';
+}
+
+function handleDragLeave() {
+    this.classList.remove('drag-over');
+}
+
+function handleDrop (e) {
+    e.preventDefault();
+    this.classList.remove('drag=over');
+
+    if (!draggedTask) return;
+
+    // Get new status from column's data-status attribute
+    const NewStatus = this.parentElement.dataset.status;
+    const taskId = parseInt(draggedTask.dataset.id);
+
+    // Update task status
+    updateTask(taskId, { status: newStatus });
+}
