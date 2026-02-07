@@ -192,12 +192,12 @@ function handleDragLeave() {
 
 function handleDrop (e) {
     e.preventDefault();
-    this.classList.remove('drag=over');
+    this.classList.remove('drag-over');
 
     if (!draggedTask) return;
 
     // Get new status from column's data-status attribute
-    const NewStatus = this.parentElement.dataset.status;
+    const newStatus = this.parentElement.dataset.status;
     const taskId = parseInt(draggedTask.dataset.id);
 
     // Update task status
