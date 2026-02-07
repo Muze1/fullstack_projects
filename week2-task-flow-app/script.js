@@ -18,3 +18,9 @@ const countElements = {
     done: document.getElementById('done-count')
 };
 
+// LocalStorage Functions
+function saveToLocalStorage() {
+    localStorage.setItem('taskFlowTasks', JSON.stringify(state.tasks));
+    localStorage.setItem('taskFlowNextId', JSON.stringify(state.nextId));
+}
+
