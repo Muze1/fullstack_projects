@@ -72,3 +72,83 @@ function createTaskElement(task) {
 
     return taskEl;
 }
+
+function renderTasks() {
+
+    // Clear all columns
+    Object.values(columns).forEach(column => {
+        column.innerHTML = '';
+        const hint = document.createElement('p');
+        hint.className = 'empty-column-hint';
+        hint.textContent = getHintForColumn(column.id);
+        column.appendChild(hint);
+    });
+
+    // Add tasks to their columns
+    state.tasks.forEach(task => {
+        const column = columns[task.status];
+        const hint = column.querySelector('.empty-column-hint');
+
+        if (hint) column.removeChild(hint);
+
+        const taskEl = createTaskElement(task);
+        column.appendChild(taskEl);
+    })
+
+    updateCounts();
+}
+
+function updateCounts () {
+    const counts = { todo: 0, progress: 0, done: 0 };
+
+    state.tasks.forEach(task => {
+        counts[task.status]++;
+    });
+
+    countElements.todo.textContent = counts.todo;
+    countElements.progress.textContent = counts.progress;
+    countElements.done.textContent = counts.done;
+}
+
+function getHintForColumn(columnId) {
+    const hints = {
+        'todo-tasks': 'Drag tasks here or add a new one above.',
+        'progress-tasks': 'Drag tasks here when you start working.',
+        'done-tasks': 'Completed tasks appear here.'
+    };
+    return hint[columnId] || 'Empty column';
+}
+
+// Task CRUD Operations
+function addTask(text, status = 'todo') {
+    if (!text.trim()) return;
+
+    const newTask = {
+        id: state.nextId++,
+        text: text.trim(),
+        status: status,
+        createdAt: new Date().toISOString()
+    };
+
+    state.tasks.push(newTask);
+    saveToLocalStorage();
+    renderTasks();
+    taskInput.value = '';
+    taskInput.focus();
+}
+
+function updateTask(id, updates) {
+    const taskIndex = state.tasks.findIndex(task => task.id === id);
+    if (taskIndex === -1) return;
+
+    state.tasks[taskIndex] = { ...state.tasks[taskIndex], ...updates };
+    saveToLocalStorage();
+    renderTasks();
+}
+
+function deleteTask(id) {
+    state.tasks = state.tasks.filter(task => task.id !== id);
+    saveToLocalStorage();
+    renderTasks();
+}
+
