@@ -116,6 +116,7 @@ h1 i {
     gap: 30px;
     margin-bottom: 50px;
     align-items: start;
+    width: 100%;
 }
 
 /* Column Styles */
