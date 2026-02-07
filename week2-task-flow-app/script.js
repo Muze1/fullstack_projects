@@ -224,3 +224,18 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+function init() {
+    console.log('🚀 Task Flow App initializing...');
+    renterTasks();
+
+    // Focus input on load
+    taskInput.focus();
+
+    // Load any existing tasks from localStorage
+    if (state.tasks.length > 0) {
+        console.log(`Loaded ${state.tasks.length} tasks from storage`)
+    }
+}
+
+// Start the app when DOM is ready
+document.addEventListener('DOMContentLoaded', init);
