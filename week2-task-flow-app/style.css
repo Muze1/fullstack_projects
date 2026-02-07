@@ -183,8 +183,18 @@ h1 i {
 
 /* Visual states for drag and drop */
 .tasks-container.drag-over {
-    background-color: rgba(66, 153, 255, 0.08);
+    background-color: rgba(66, 153, 225, 0.1);
     border: 2px dashed #4299e1;
+    transition: all 0.2s ease;
+}
+
+@keyframes taskDrop {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.task:not(.dragging) {
+    animation: taskDrop 0.3s ease-out;
 }
 
 .empty-column-hint {
@@ -212,11 +222,11 @@ h1 i {
 }
 
 .task-dragging {
-    /* Class for visual feedback */
-    opacity: 0.6;
-    transform: rotate(3deg);
+    opacity: 0.7;
+    transform: scale(1.1) rotate(2deg);
     cursor: grabbing;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rbga(0, 0, 0, 0.15);
+    z-index: 1000;
 }
 
 .task[data-status="todo"] { border-left-color: var(--color-todo); }
@@ -270,6 +280,36 @@ h1 i {
 
 .delete-btn:hover {
     background: #feb2b2;
+}
+
+/* Task metadata styling */
+.task-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+.task-time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-time::before {
+    content: '🕒';
+    font-size: 0.7rem;
+}
+
+.task-time.completed::before {
+    content: '✅';
+}
+
+.task-time.completed {
+    color: #48bb78;
+    font-weight: 500;
 }
 
 /* Footer */
