@@ -161,7 +161,7 @@ function handleDragStart(e) {
 
     // Set drag image
     e.dataTransfer.setData('text/plain', this.dataset.id);
-    e/dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.effectAllowed = 'move';
 
     // Add slight delay for better visuals
     setTimeout(() => {
