@@ -14,7 +14,7 @@ const columns = {
 };
 const countElements = {
     todo: document.getElementById('todo-count'),
-    progress: document.getElementById('progress-tasks'),
+    progress: document.getElementById('progress-count'),
     done: document.getElementById('done-count')
 };
 
@@ -37,7 +37,7 @@ function createTaskElement(task) {
     taskEl.innerHTML = `
     <div class="task-content" contenteditable="true">${escapeHtml(task.text)}</div>
     <div class="task-actions">
-        <button class=delete-btn" aria-label="Delete task">
+        <button class="delete-btn" aria-label="Delete task">
             <i class="fas fa-trash"></i>
         </button>
     </div>
@@ -74,6 +74,8 @@ function createTaskElement(task) {
 }
 
 function renderTasks() {
+    console.log('=== Render Tasks Start ===')
+    console.log('All tasks:', state.tasks);
 
     // Clear all columns
     Object.values(columns).forEach(column => {
@@ -87,8 +89,8 @@ function renderTasks() {
     // Add tasks to their columns
     state.tasks.forEach(task => {
         const column = columns[task.status];
-        const hint = column.querySelector('.empty-column-hint');
 
+        const hint = column.querySelector('.empty-column-hint');
         if (hint) column.removeChild(hint);
 
         const taskEl = createTaskElement(task);
@@ -96,6 +98,7 @@ function renderTasks() {
     })
 
     updateCounts();
+    console.log('=== Render Tasks End ===')
 }
 
 function updateCounts () {
@@ -197,7 +200,7 @@ function handleDrop (e) {
     if (!draggedTask) return;
 
     // Get new status from column's data-status attribute
-    const newStatus = this.parentElement.dataset.status;
+    const newStatus = this.dataset.status;
     const taskId = parseInt(draggedTask.dataset.id);
 
     // Update task status
@@ -226,7 +229,7 @@ function escapeHtml(text) {
 
 function init() {
     console.log('🚀 Task Flow App initializing...');
-    renterTasks();
+    renderTasks();
 
     // Focus input on load
     taskInput.focus();
