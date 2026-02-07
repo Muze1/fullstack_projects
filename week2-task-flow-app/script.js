@@ -146,7 +146,24 @@ function updateTask(id, updates) {
     const taskIndex = state.tasks.findIndex(task => task.id === id);
     if (taskIndex === -1) return;
 
-    state.tasks[taskIndex] = { ...state.tasks[taskIndex], ...updates };
+    const oldTask = state.tasks[taskIndex];
+    const isMoveToDone = updates.status === 'done' && oldTask.status !== 'done';
+    const isMovingFromDone = updates.status !== 'done' && oldTask.status === 'done';
+
+    const updatedTask = {
+        ...oldTask,
+        ...updates,
+        updatedAt: new Date().toISOString() // Always update timestamp.
+    };
+
+    // Track completion time
+    if (isMoveToDone) {
+        updatedTask.completedAt = new Date().toISOString();
+    } else if (isMovingFromDone) {
+        updateTask.completedAt = null;
+    }
+
+    state.tasks[taskIndex] = updatedTask;
     saveToLocalStorage();
     renderTasks();
 }
