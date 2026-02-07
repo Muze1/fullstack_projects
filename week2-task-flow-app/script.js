@@ -217,3 +217,10 @@ Object.values(columns).forEach(column => {
     column.addEventListener('drop', handleDrop);
 })
 
+// Helper functions
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
