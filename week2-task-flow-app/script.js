@@ -1,10 +1,10 @@
 // State & DOM References
 const state = {
-    tasks: JSON.parse(localStorage.getItem('taskFlowTasks')) || [],
-    nextId: JSON.parse(localStorage.getItem('taskFlowNextId')) || 1
+    tasks: JSON.parse(localStorage.getItem('taskFlowTasks')) || [], // Persists data across page refreshes.
+    nextId: JSON.parse(localStorage.getItem('taskFlowNextId')) || 1 // Prevents ID conflicts
 };
 
-// Retrieve & store DOM Elements
+// Retrieve & organise DOM Elements
 const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
 const columns = {
@@ -22,13 +22,15 @@ const countElements = {
 function saveToLocalStorage() {
     localStorage.setItem('taskFlowTasks', JSON.stringify(state.tasks));
     localStorage.setItem('taskFlowNextId', JSON.stringify(state.nextId));
+    // .stringify() - Turn objects into strings for localStorage.
+    // Separate keys for tasks and nextId.
 }
 
 // Task Rendering & UI
 function createTaskElement(task) {
     const taskEl = document.createElement('div');
     taskEl.className = 'task';
-    taskEl.draggable = true;
+    taskEl.draggable = true; // Enable native drag in HTML for drag&drop.
     taskEl.dataset.id = task.id;
     taskEl.dataset.status = task.status;
 
@@ -47,7 +49,7 @@ const contentDiv = taskEl.querySelector('.task-content');
 const deleteBtn = taskEl.querySelector('.delete-btn');
 
 // Save on edit
-contentDiv.addEventListener('blur'. () => {
+contentDiv.addEventListener('blur', () => {
     updateTask(task.id, { text: contentDiv.textContent });
 });
 
