@@ -282,7 +282,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 2000px) {
+@media (max-width: 1200px) {
     .board {
         grid-template-columns: repeat(2, 1fr);
     }
