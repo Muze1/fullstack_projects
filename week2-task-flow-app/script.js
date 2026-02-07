@@ -116,7 +116,7 @@ function getHintForColumn(columnId) {
         'progress-tasks': 'Drag tasks here when you start working.',
         'done-tasks': 'Completed tasks appear here.'
     };
-    return hint[columnId] || 'Empty column';
+    return hints[columnId] || 'Empty column';
 }
 
 // Task CRUD Operations
