@@ -34,8 +34,16 @@ function createTaskElement(task) {
     taskEl.dataset.id = task.id;
     taskEl.dataset.status = task.status;
 
+    // Format the timestamps for display
+    const createdTime = formatTimeAgo(task.createdAt);
+    const completedTime = task.completedAt ? `Completed: ${formatTimeAgo(task.completedAt)}` : '';
+
     taskEl.innerHTML = `
     <div class="task-content" contenteditable="true">${escapeHtml(task.text)}</div>
+    <div class="task-meta">
+        <span class="task-time">Added: ${createdTime}</span>
+        ${task.completedAt ? `<span class="task-time completed">${completedTime}</span>` : ''}
+        </div>
     <div class="task-actions">
         <button class="delete-btn" aria-label="Delete task">
             <i class="fas fa-trash"></i>
