@@ -18,9 +18,45 @@ const countElements = {
     done: document.getElementById('done-count')
 };
 
-// LocalStorage Functions
+// Local storage Functions
 function saveToLocalStorage() {
     localStorage.setItem('taskFlowTasks', JSON.stringify(state.tasks));
     localStorage.setItem('taskFlowNextId', JSON.stringify(state.nextId));
 }
 
+// Task Rendering & UI
+function createTaskElement(task) {
+    const taskEl = document.createElement('div');
+    taskEl.className = 'task';
+    taskEl.draggable = true;
+    taskEl.dataset.id = task.id;
+    taskEl.dataset.status = task.status;
+
+    taskEl.innerHTML = `
+    <div class="task-content" contenteditable="true">${escapeHtml(task.text)}</div>
+    <div class="task-actions">
+        <button class=delete-btn" aria-label="Delete task">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+    `;
+}
+
+// Add event listeners to the new task
+const contentDiv = taskEl.querySelector('.task-content');
+const deleteBtn = taskEl.querySelector('.delete-btn');
+
+// Save on edit
+contentDiv.addEventListener('blur'. () => {
+    updateTask(task.id, { text: contentDiv.textContent });
+});
+
+// Enter key to finish editing
+contentDiv.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        contentDiv.blur();
+    }
+});
+
+// Delete task
