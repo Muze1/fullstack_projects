@@ -123,11 +123,36 @@ function updateCounts () {
 
 function getHintForColumn(columnId) {
     const hints = {
-        'todo-tasks': 'Drag tasks here or add a new one above.',
-        'progress-tasks': 'Drag tasks here when you start working.',
-        'done-tasks': 'Completed tasks appear here.'
+        'todo-tasks': {
+            icon: '📝',
+            title: 'Nothing to do yet',
+            message: 'Add a task above to get started!'
+        },
+        'progress-tasks': {
+            icon: '⚙️',
+            title: 'No tasks in progress',
+            message: 'Drag tasks here when you start working on them'
+        },
+        'done-tasks': {
+            icon: '✅',
+            title: 'No completed tasks',
+            message: 'Completed tasks will appear here'
+        }
     };
-    return hints[columnId] || 'Empty column';
+    
+    const hint = hints[columnId] || {
+        icon: '📁',
+        title: 'Empty column',
+        message: 'Add or drag tasks here'
+    };
+    
+    return `
+        <div class="empty-state">
+            <div class="empty-state-icon">${hint.icon}</div>
+            <h3 class="empty-state-title">${hint.title}</h3>
+            <p class="empty-state-message">${hint.message}</p>
+        </div>
+    `;
 }
 
 // Task CRUD Operations
