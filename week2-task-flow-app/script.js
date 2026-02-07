@@ -203,3 +203,9 @@ function handleDrop (e) {
     // Update task status
     updateTask(taskId, { status: newStatus });
 }
+
+// Event listeners
+taskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addTask(taskInput.value);
+});
