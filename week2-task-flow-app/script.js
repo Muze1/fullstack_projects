@@ -42,23 +42,33 @@ function createTaskElement(task) {
         </button>
     </div>
     `;
+
+
+    // Add event listeners to the new task
+    const contentDiv = taskEl.querySelector('.task-content');
+    const deleteBtn = taskEl.querySelector('.delete-btn');
+
+    // Save on edit
+    contentDiv.addEventListener('blur', () => {
+        updateTask(task.id, { text: contentDiv.textContent });
+    });
+
+    // Enter key to finish editing
+    contentDiv.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            contentDiv.blur();
+        }
+    });
+
+    // Delete task
+    deleteBtn.addEventListener('click', () => {
+        deleteTask(task.id);
+    });
+
+    // Drag events
+    taskEl.addEventListener('dragstart', handleDragStart);
+    taskEl.addEventListener('dragend', handleDragEnd);
+
+    return taskEl;
 }
-
-// Add event listeners to the new task
-const contentDiv = taskEl.querySelector('.task-content');
-const deleteBtn = taskEl.querySelector('.delete-btn');
-
-// Save on edit
-contentDiv.addEventListener('blur', () => {
-    updateTask(task.id, { text: contentDiv.textContent });
-});
-
-// Enter key to finish editing
-contentDiv.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        contentDiv.blur();
-    }
-});
-
-// Delete task
