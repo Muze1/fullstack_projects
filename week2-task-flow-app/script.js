@@ -209,3 +209,11 @@ taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     addTask(taskInput.value);
 });
+
+// Set up drag and drop for columns
+Object.values(columns).forEach(column => {
+    column.addEventListener('dragover', handleDragOver);
+    column.addEventListener('dragleave', handleDragLeave);
+    column.addEventListener('drop', handleDrop);
+})
+
